@@ -3,7 +3,7 @@
     <div id="routesDiv">
         <h1>test header</h1>
         <form action="" method="post" id="routesForm">
-            <select form="routesForm" name="routeField" size="30" onchange="this.form.submit()">
+            <select id="routesId" form="routesForm" name="routeField" size="30">
                 {% for route in routes %}
                     <option value="{{ route.Route }}">{{ route.Description }}</option>
                 {% endfor %}
@@ -11,7 +11,7 @@
         </form>
 
         <form action="" method="post" id="directionForm">
-            <select form="directionForm" name="directionField" onchange="this.form.submit()">
+            <select form="directionForm" name="directionField" size="4">
                 {% for dir in directions %}
                     <option value="">{{ dir }}</option>
                 {% endfor %}
