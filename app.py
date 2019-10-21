@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 import requests, json
 
 app = Flask(__name__)
+app.static_folder = 'static'
 URL = 'http://svc.metrotransit.org/nextrip/{}?format=json'
 
 
@@ -13,6 +14,7 @@ def homepage():
     if request.method == 'GET':
         return render_template('index.html', routes = resData)
     else:
+        # route = request.form['routeField']
         return render_template('index.html')
 
 
