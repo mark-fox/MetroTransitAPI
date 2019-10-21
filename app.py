@@ -11,11 +11,12 @@ def homepage():
     res = requests.get(URL.format('routes'))
     resData = res.json()
 
+# TODO condense parameters and make single return line
     if request.method == 'GET':
-        return render_template('index.html', routes = resData)
+        return render_template('index.html', routes=resData)
     else:
-        # route = request.form['routeField']
-        return render_template('index.html')
+        route = request.form['routeField']
+        return render_template('index.html', routes=resData)
 
 
 if __name__ == '__main__':

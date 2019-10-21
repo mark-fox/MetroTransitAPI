@@ -2,10 +2,18 @@
 {% block body %}
     <div id="routesDiv">
         <h1>test header</h1>
-        <form action="/" method="post" id="routesForm">
-            <select form="routesForm" name="routeField" size="30">
+        <form action="" method="post" id="routesForm">
+            <select form="routesForm" name="routeField" size="30" onchange="this.form.submit()">
                 {% for route in routes %}
                     <option value="{{ route.Route }}">{{ route.Description }}</option>
+                {% endfor %}
+            </select>
+        </form>
+
+        <form action="" method="post" id="directionForm">
+            <select form="directionForm" name="directionField" onchange="this.form.submit()">
+                {% for dir in directions %}
+                    <option value="">{{ dir }}</option>
                 {% endfor %}
             </select>
         </form>
