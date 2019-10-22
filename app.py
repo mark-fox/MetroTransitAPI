@@ -21,6 +21,15 @@ def getDirections():
     return jsonify(res.json())
 
 
+@app.route('/stops')
+def getStops():
+    print('getStops reached')
+    routeNumber = request.args['routeNum']
+    direction = request.args['direction']
+    res = requests.get(URL.format('stops/' + routeNumber + '/' + direction))
+    return jsonify(res.json())
+
+
 if __name__ == '__main__':
     # TODO remove debug=True text when finalizing
     app.run(debug=True)
