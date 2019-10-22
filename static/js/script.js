@@ -14,9 +14,13 @@ function requestDirections(route){
         method: "GET",
         url: "/directions",
         data: { 'routeNum' : route },
-//        contentType: 'application/json;charset=UTF-8',
+        contentType: 'application/json;charset=UTF-8',
+        dataType: 'json',
         success: function(directions){
-        // TODO add directions to drop down list
+            $('#directionId').empty();
+            for (var i = 0; i < directions.length; i++) {
+                $('#directionId').append('<option value="' + directions[i].Value + '">' + directions[i].Text + '</option>');
+            }
         }
         });
 };
