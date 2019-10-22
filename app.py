@@ -10,32 +10,15 @@ URL = 'http://svc.metrotransit.org/nextrip/{}?format=json'
 def homepage():
     res = requests.get(URL.format('routes'))
     resData = res.json()
-
-# TODO condense parameters and make single return line
-    if request.method == 'GET':
-        return render_template('index.html', routes=resData)
-    else:
-        route = request.form['routeField']
-        return render_template('index.html', routes=resData)
+    return render_template('index.html', routes=resData)
 
 
 @app.route('/directions', methods=['GET', 'POST'])
 def getDirections():
     print('getDirections reached')
-    if request.method == "GET":
-        # routeNumber = request.json['routeNum']
-        routeNumber = request.args['routeNum']
-        # routeNumber = request.get_json()
-        print(type(routeNumber))
-        print(routeNumber)
-        temp = 'directions/' + str(routeNumber)
-        print('temp is: ' + temp)
-        res = requests.get(URL.format('directions/' + routeNumber))
-        print('directions response:')
-        print(type(res))
-        # print(res[0].Text)
-        print(res.json())
-        return jsonify(res.json()) # json.dumps(res) # jsonify(res.json()) # res.json()
+    routeNumber = request.args['routeNum']
+    res = requests.get(URL.format('directions/' + routeNumber))
+    return jsonify(res.json())
 
 
 if __name__ == '__main__':
