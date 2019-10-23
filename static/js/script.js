@@ -31,6 +31,7 @@ function requestDirections(route){
         dataType: 'json',
         success: function(directions){
             $('#directionId').empty();
+            addPlaceholder($('#directionId'), 'Select Direction');
             for (var i = 0; i < directions.length; i++) {
                 $('#directionId').append('<option value="' + directions[i].Value + '">' + directions[i].Text + '</option>');
             }
@@ -48,6 +49,7 @@ function requestStops(route, direction){
         dataType: 'json',
         success: function(stops){
             $('#stopsId').empty();
+            addPlaceholder($('#stopsId'), 'Select Bus Stop');
             for (var i = 0; i < stops.length; i++){
                 $('#stopsId').append('<option value="' + stops[i].Value + '">' + stops[i].Text + '</option>');
             }
@@ -95,3 +97,8 @@ function requestTime(route, direction, stop){
         }
     })
 };
+
+
+function addPlaceholder(element, message){
+    element.append('<option label="' + message + '" disabled class="optPlaceholder"></option>');
+}
