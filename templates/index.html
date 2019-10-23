@@ -5,7 +5,8 @@
 
 <div id="allListsDiv">
     <div id="routesDiv">
-        <select id="routesId" name="routeField" size="30">
+        <select id="routesId" name="routeField" size="20">
+            <option label="Select a Bus Route" disabled class="optPlaceholder"></option>
             {% for route in routes %}
                 <option value="{{ route.Route }}">{{ route.Description }}</option>
             {% endfor %}
@@ -13,18 +14,23 @@
     </div>
 
     <div id="directionDiv">
-        <select id="directionId" name="directionField" size="4"></select>
+        <select id="directionId" name="directionField" size="4">
+            <option disabled>-------------------</option>
+        </select>
     </div>
 
     <div id="stopsDiv">
-        <select id="stopsId" size="15"></select>
+        <select id="stopsId" size="15">
+            <option disabled>--------------------------------------------</option>
+        </select>
     </div>
 </div>
 
 <hr>
 
 <div id="timeDiv">
-    <p id="timeId"></p>
+    <h2>Next Bus Arrives in:</h2>
+    <p id="timeId">(Select a location above)</p>
 </div>
 
 {% endblock %}
