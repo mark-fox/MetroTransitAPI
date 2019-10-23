@@ -30,6 +30,22 @@ def getStops():
     return jsonify(res.json())
 
 
+@app.route('/time')
+def getTime():
+    print('getTime reached')
+    routeNumber = request.args['routeNum']
+    direction = request.args['direction']
+    stop = request.args['stopNum']
+    res = requests.get(URL.format(routeNumber + '/' + direction + '/' + stop))
+
+    # print(res.args.get('DepartureTime'))
+    # print(res.json())
+    #
+    # print(type(res.json()[0]['DepartureTime']))
+    # print(res.json()[0]['DepartureTime'])
+    return jsonify(res.json())
+
+
 if __name__ == '__main__':
     # TODO remove debug=True text when finalizing
     app.run(debug=True)
