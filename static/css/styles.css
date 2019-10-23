@@ -1,5 +1,24 @@
 h1 {
-    color: red;
+    text-align: center;
+}
+
+#allListsDiv {
+    display: flex;
+}
+#allListsDiv div {
+
+}
+
+#routesDiv {
+
+}
+
+#directionDiv {
+
+}
+
+#stopsDiv {
+
 }
 
 #timeId {
