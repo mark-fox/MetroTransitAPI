@@ -72,32 +72,42 @@ function requestTime(route, direction, stop){
         dataType: 'json',
         success: function(timeObj){
             $('#timeId').empty();
-
-            console.log(timeObj);
-//            console.log(timeLeft[0].DepartureTime);
-//            console.log(typeof(timeLeft[0].DepartureTime));
-            // TODO figure out more elegant strategy
-            // TODO Uncaught TypeError: Cannot read property of undefined
-            var arrivalTime = parseInt(timeObj[0].DepartureTime.slice(6, -7));
-            var timeLeft = arrivalTime - new Date().getTime();
-            console.log(arrivalTime);
-            console.log(new Date().getTime());
-            console.log('remaining time:');
-            console.log(timeLeft);
-            console.log(timeLeft/1000/60) // minutes
-
-            timeLeft = parseInt(timeLeft/1000/60);
-
             var timeString = "";
-            if (timeLeft < 60) {
-                timeString = timeLeft + " minutes";
-            } else if (timeLeft > 60) {
-                var hours = parseInt(timeLeft/60);
-                var mins = timeLeft%60;
-                timeString = hours + " hours " + mins + " minutes";
-            } else {
-                timeString = "Last bus has already departed";
+            try {
+                // TODO figure out more elegant strategy
+                var arrivalTime = parseInt(timeObj[0].DepartureTime.slice(6, -7));
+                var timeLeft = arrivalTime - new Date().getTime();
+                console.log(arrivalTime);
+                console.log(new Date().getTime());
+                console.log('remaining time:');
+                console.log(timeLeft);
+                console.log(timeLeft/1000/60) // minutes
+
+                timeLeft = parseInt(timeLeft/1000/60);
+
+
+                if (timeLeft < 60) {
+                    timeString = timeLeft + " minutes";
+                } else if (timeLeft > 60) {
+                    var hours = parseInt(timeLeft/60);
+                    var mins = timeLeft%60;
+                    timeString = hours + " hours " + mins + " minutes";
+                } else {
+                    timeString = "Last bus has already departed";
+                }
+            } catch(e){
+                timeString = "No Arrival times were found";
             }
+//            if (timeObj[0].DepartureTime === undefined) {
+//
+//            } else {
+//                console.log(timeObj);
+    //            console.log(timeLeft[0].DepartureTime);
+    //            console.log(typeof(timeLeft[0].DepartureTime));
+
+                // TODO Uncaught TypeError: Cannot read property of undefined
+
+//            }
             $('#timeId').text(timeString);
         }
     })
