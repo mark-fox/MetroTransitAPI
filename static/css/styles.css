@@ -4,34 +4,17 @@ h1 {
 
 #allListsDiv {
     display: flex;
-
     justify-content: center;
 }
+
 #allListsDiv div {
     margin: 20px;
-
-}
-
-select {
-
 }
 
 option {
     padding: 1px;
     padding-left: 5px;
     font-size: 16px;
-}
-
-#routesDiv {
-
-}
-
-#directionDiv {
-
-}
-
-#stopsDiv {
-
 }
 
 .optPlaceholder {
@@ -43,7 +26,7 @@ option {
 }
 
 h2 {
-text-align: center;
+    text-align: center;
 }
 
 #timeId {

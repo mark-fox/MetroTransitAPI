@@ -15,7 +15,6 @@ def homepage():
 
 @app.route('/directions', methods=['GET', 'POST'])
 def getDirections():
-    print('getDirections reached')
     routeNumber = request.args['routeNum']
     res = requests.get(URL.format('directions/' + routeNumber))
     return jsonify(res.json())
@@ -23,7 +22,6 @@ def getDirections():
 
 @app.route('/stops')
 def getStops():
-    print('getStops reached')
     routeNumber = request.args['routeNum']
     direction = request.args['direction']
     res = requests.get(URL.format('stops/' + routeNumber + '/' + direction))
@@ -32,21 +30,12 @@ def getStops():
 
 @app.route('/time')
 def getTime():
-    print('getTime reached')
     routeNumber = request.args['routeNum']
     direction = request.args['direction']
     stop = request.args['stopNum']
     res = requests.get(URL.format(routeNumber + '/' + direction + '/' + stop))
-
-    # print(res.args.get('DepartureTime'))
-    # print(res.json())
-    #
-    # print(type(res.json()[0]['DepartureTime']))
-    # print(res.json()[0]['DepartureTime'])
     return jsonify(res.json())
 
 
 if __name__ == '__main__':
-    # TODO remove debug=True text when finalizing
-    app.run(debug=True)
-# TODO pip freeze > requirements.txt
+    app.run()

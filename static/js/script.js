@@ -1,9 +1,7 @@
-console.log("testing script");
 var timePlaceholderText = "(Select a location above)";
 
 $(function(){
     $('#routesId').change(function(){
-        console.log("routeid reached");
         $("#timeId").text(timePlaceholderText);
         $('#stopsId').empty();
         addPlaceholder($('#stopsId'), 'Select Bus Stop');
@@ -11,14 +9,12 @@ $(function(){
         requestDirections(route);
     })
     $('#directionId').change(function(){
-        console.log("directionId reached");
         $("#timeId").text(timePlaceholderText);
         var route = $("#routesId option:selected").val();
         var direction = $("#directionId option:selected").val();
         requestStops(route, direction);
     })
     $('#stopsId').change(function(){
-        console.log("stopsId reached");
         var route = $("#routesId option:selected").val();
         var direction = $("#directionId option:selected").val();
         var stop = $("#stopsId option:selected").val();
@@ -41,7 +37,7 @@ function requestDirections(route){
                 $('#directionId').append('<option value="' + directions[i].Value + '">' + directions[i].Text + '</option>');
             }
         }
-        });
+    });
 };
 
 
@@ -77,14 +73,7 @@ function requestTime(route, direction, stop){
                 // TODO figure out more elegant strategy
                 var arrivalTime = parseInt(timeObj[0].DepartureTime.slice(6, -7));
                 var timeLeft = arrivalTime - new Date().getTime();
-                console.log(arrivalTime);
-                console.log(new Date().getTime());
-                console.log('remaining time:');
-                console.log(timeLeft);
-                console.log(timeLeft/1000/60) // minutes
-
                 timeLeft = parseInt(timeLeft/1000/60);
-
 
                 if (timeLeft < 60) {
                     timeString = timeLeft + " minutes";
@@ -98,16 +87,6 @@ function requestTime(route, direction, stop){
             } catch(e){
                 timeString = "No Arrival times were found";
             }
-//            if (timeObj[0].DepartureTime === undefined) {
-//
-//            } else {
-//                console.log(timeObj);
-    //            console.log(timeLeft[0].DepartureTime);
-    //            console.log(typeof(timeLeft[0].DepartureTime));
-
-                // TODO Uncaught TypeError: Cannot read property of undefined
-
-//            }
             $('#timeId').text(timeString);
         }
     })
