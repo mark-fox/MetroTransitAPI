@@ -1,13 +1,18 @@
 console.log("testing script");
+var timePlaceholderText = "(Select a location above)";
 
 $(function(){
     $('#routesId').change(function(){
         console.log("routeid reached");
+        $("#timeId").text(timePlaceholderText);
+        $('#stopsId').empty();
+        addPlaceholder($('#stopsId'), 'Select Bus Stop');
         var route = $("#routesId option:selected").val();
         requestDirections(route);
     })
     $('#directionId').change(function(){
         console.log("directionId reached");
+        $("#timeId").text(timePlaceholderText);
         var route = $("#routesId option:selected").val();
         var direction = $("#directionId option:selected").val();
         requestStops(route, direction);
