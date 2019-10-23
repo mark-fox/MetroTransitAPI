@@ -4,9 +4,22 @@ h1 {
 
 #allListsDiv {
     display: flex;
+
+    justify-content: center;
 }
 #allListsDiv div {
+    margin: 20px;
 
+}
+
+select {
+
+}
+
+option {
+    padding: 1px;
+    padding-left: 5px;
+    font-size: 16px;
 }
 
 #routesDiv {
@@ -24,8 +37,9 @@ h1 {
 .optPlaceholder {
     color: black;
     font-size: 20px;
-    background: #0066ff;
+    background: #ff1a1a;
     font-weight: bold;
+    text-align: center;
 }
 
 h2 {
@@ -34,4 +48,9 @@ text-align: center;
 
 #timeId {
     text-align: center;
+    font-size: 18px;
+}
+
+#bodyDiv {
+    font-family: "Arial";
 }
